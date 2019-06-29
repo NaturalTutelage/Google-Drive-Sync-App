@@ -39,10 +39,10 @@ def sync_folder(gdrive_folder_name):
     print('\n \n_______________GDrive Status of Synced Folder_______________\n')
     print('Getting the info...\n')
     if not items:
-         print("'{0}' not found on GDrive, creating a new folder.\n".format(file_metadata['name']))
+         print("'{0}' not found on GDrive, creating a new folder.\n".format(file_metadata['name'])) #create a new folder if not found on drive
          file = service.files().create(body=file_metadata,fields='id').execute()
     else:
-         print("'{0}' folder on GDrive\n".format(file_metadata['name']))
+         print("'{0}' folder on GDrive\n".format(file_metadata['name'])) #folder found and listing the files and id info
          file = items[0]
 
     folder_id = file.get('id')
@@ -65,7 +65,7 @@ def sync_folder(gdrive_folder_name):
 
     # uploading new files only
     print('\n ______________________Upload Activity______________________\n')
-    os.chdir("C:/Users/kartik/Documents/DSync")
+    os.chdir("C:/Users/kartik/Documents/DSync") #Replace the path in "" with your actual path of the local folder
     print('Inspecting the files to be uploaded from local folder...\n')
     for index,_file in enumerate(glob.glob('*.*'),start=1):
 
@@ -124,10 +124,8 @@ def sync_folder(gdrive_folder_name):
 
 
 if __name__ == '__main__':
-    sync_folder('FromLaptop')
+    sync_folder('FromLocal_DSync')
     if len(glob.glob('*.*')) == len(updated_drive_filenames):
-#        print(len(glob.glob('*.*')))
-#        print(len(updated_drive_filenames))
         print('\n************************************************************')
         print('\n \t \t \t   Synced')
         print('\n************************************************************')
