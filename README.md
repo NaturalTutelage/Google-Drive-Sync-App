@@ -16,6 +16,11 @@ Usage flow of the app:
 
 Now, the flow is one way from local to google drive folder. I created this app to fulfill my need to upload multiple files of any format at once with a click of a button as I read a lot from pdfs/images/textfiles etc. And keeping in mind the google drive limited storage any file not present in the local folder should be removed from the google drive folder as well to save space and also remove unwanted files or the files not needed anymore. 
 
+Challenges faced:
+1. Need of creating or using different folder anothet time : Solved by passing it as a parameter to a def in main.
+2. Uploading and deleting files with any format : Solved by using "mimetype='application/octet-stream'"(Line #80 in code).
+3. Selecting a particular folder only : Solved by using q query in Gdrive API , folder id in metadata(unique identifier).
+
 Same app can be modified to sync it both ways. Any activity on either of the folder will affect the other one. So feel free to do it or if any other idea to make it more robust and better. (Will upload that fucntionality added in sometime as well)
 
 Now I wanted this to be in control before the sync hence I used executable form. After click the button only it'll do all the work.
